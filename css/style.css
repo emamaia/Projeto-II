@@ -1,0 +1,34 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-image: linear-gradient(#e0c3fc, #8ec5fc); 
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container__lista {
+    background-color: beige;
+    width: 500px;
+    display: flex;
+    margin: 0 auto;
+}
+
+.lista {
+    width: 100%;
+    text-align: center;
+}
+
+#input__tarefa {
+    width: 496px;
+    height: 100px;;
+}
+
+#input__botao {
+    width: 100%;
+    height: 50px;
+    background-color: #ba7af8;    
+    color: beige;
+}
