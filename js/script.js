@@ -45,15 +45,8 @@ formulario.addEventListener('submit', function(evento){
                 lista.classList.add('check__tarefa')
             }        
         })
-        botaoFeitos.addEventListener('click', function(){
-            if(listaTarefas.classList.contains('check__tarefa')){
-                listaTarefas.classList.remove("check__tarefa") 
-                botaoFeitos.textContent= 'Marcar todos como lidos'
-            }else{
-                listaTarefas.classList.add("check__tarefa")
-                botaoFeitos.textContent="Desfazer"
-            }    
-        })
+       
+       
         
         botaoRemover.addEventListener('click', function(){
            lista.remove()   
@@ -67,6 +60,13 @@ formulario.addEventListener('submit', function(evento){
 })
 
    
+botaoFeitos.addEventListener('click', function(){
+    if(listaTarefas.classList.contains('check__tarefa')){
+        listaTarefas.classList.remove("check__tarefa") 
+        botaoFeitos.textContent= 'Marcar todos como lidos'
+    }else{
+        listaTarefas.classList.add("check__tarefa")
+        botaoFeitos.textContent="Desfazer"
+    }    
 
-
-   
+})
