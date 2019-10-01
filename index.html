@@ -13,23 +13,27 @@
        Emana - List to do 
     </h1>
 
-    <section class='container__lista' id='container-lista'>
+    <section class='container__geral' id='container__geral'>
 
-       <div class="lista" id='lista'>
+       <div class="container__lista" id='container__lista'>
             <h2 id='adicione__tarefa'>
                Adicione uma nova tarefa
             </h2>
-               
-            <input id=input__tarefa type="text">
+            
+            <form class='formulario' id='formulario'>
+                    <input id='input__usuario' type="text" placeholder="Digite uma tarefa">
            
-            <button id=input__botao>Add</button>
-               
-            <ul id='tarefas' class= lista__tarefas>
+                    <button id='input__botao'>Add</button>
+                    <p id='msg__erro'></p>
+            </form>
+                          
+            <ul id='lista__tarefas' class= 'tarefas' >          
         
             </ul>
+
+            <div id='botoes'></div>
         </div> 
-        
-    </section>
+    </section> 
 
     <script src='./js/script.js'></script>
 </body>
