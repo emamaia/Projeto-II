@@ -1,3 +1,4 @@
+const containerGeral = document.getElementById('container__geral')
 const containerLista = document.getElementById('container__lista')
 const formulario = document.getElementById('formulario')
 const listaTarefas = document.getElementById('lista__tarefas')
@@ -5,6 +6,7 @@ const erro = document.getElementById('msg__erro')
 const botoes = document.getElementById('botoes')
 const botaoRemover = document.createElement('button')
 const botaoFeitos = document.createElement('button')
+let dragging 
 botoes.appendChild(botaoFeitos)
 botoes.appendChild(botaoRemover)
 
@@ -26,7 +28,7 @@ formulario.addEventListener('submit', function(evento){
     } else {
         erro.classList.remove('erro')
         erro.textContent=''
-        const lista = document.createElement('li')
+        let lista = document.createElement('li')
         listaTarefas.appendChild(lista)
         lista.classList.add('linha') 
         lista.textContent= itemLista
@@ -44,29 +46,48 @@ formulario.addEventListener('submit', function(evento){
             } else{
                 lista.classList.add('check__tarefa')
             }        
-        })
-       
-       
+        })            
         
         botaoRemover.addEventListener('click', function(){
-           lista.remove()   
-                
-        })
+           lista.remove()                   
+        })    
         
+    containerLista.setAttribute('draggable', true)
+    listaTarefas.setAttribute('draggable', true)
+    lista.setAttribute('draggable', true)
+
+   listaTarefas.addEventListener('dragstart', function(ev){
+        dragging = ev.target.closest('.linha')
+   })
+
+   listaTarefas.addEventListener('dragover', function(ev){
+       ev.preventDefault()
+       const node = ev.target.closest('.linha')
+       this.insertBefore(dragging, node)
+   })
+
+   listaTarefas.addEventListener('dragend', function(ev){
+       dragging=null
+   })
+
     }
 
-    formulario.reset()     
-   
+    formulario.reset()        
 })
 
    
-botaoFeitos.addEventListener('click', function(){
-    if(listaTarefas.classList.contains('check__tarefa')){
-        listaTarefas.classList.remove("check__tarefa") 
-        botaoFeitos.textContent= 'Marcar todos como lidos'
-    }else{
-        listaTarefas.classList.add("check__tarefa")
-        botaoFeitos.textContent="Desfazer"
-    }    
-
+botaoFeitos.addEventListener('click', function(){    
+        if(listaTarefas.classList.contains('check__tarefa')){
+            listaTarefas.classList.remove("check__tarefa") 
+            botaoFeitos.textContent= 'Marcar todos como lidos'
+        }else{
+            listaTarefas.classList.add("check__tarefa")
+            botaoFeitos.textContent="Desfazer"
+        }     
 })
+
+// comentario
+
+
+
+
