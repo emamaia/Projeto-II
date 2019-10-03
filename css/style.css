@@ -37,11 +37,10 @@ h2{
     height: 100px;;
 }
 
-#input__etiqueta {
-    width: 240px;
-    height: 50px;
-    margin-top:20px; 
-    margin-bottom: 20px;
+
+.opcoes {
+    font-size: 11px;
+    background-color: #ba7af8;
 }
 
 #input__botao {

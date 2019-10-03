@@ -2,12 +2,17 @@ const containerGeral = document.getElementById('container__geral')
 const containerLista = document.getElementById('container__lista')
 const formulario = document.getElementById('formulario')
 const listaTarefas = document.getElementById('lista__tarefas')
+const opcoes = document.getElementById('seletor__etiqueta')
+
 const erro = document.getElementById('msg__erro')
+
 const botoes = document.getElementById('botoes')
 const botaoRemover = document.createElement('button')
 const botaoFeitos = document.createElement('button')
 const botaoExlcuiCheck = document.createElement('button')
+
 let dragging 
+
 botoes.appendChild(botaoFeitos)
 botoes.appendChild(botaoRemover)
 botoes.appendChild(botaoExlcuiCheck)
@@ -25,25 +30,28 @@ formulario.addEventListener('submit', function(evento){
           
     const inputUsuario= document.getElementById('input__usuario')
     const itemLista = inputUsuario.value
-    const inputEtiqueta = document.getElementById('input__etiqueta')
-    const intemEtiqueta = inputEtiqueta.value
-                   
+                       
     if(itemLista.trim()===''){
         erro.classList.add('erro')
         erro.textContent= 'Digite uma tarefa, irmã'
     } else {
         erro.classList.remove('erro')
         erro.textContent=''
-
+       
         let lista = document.createElement('li')
         listaTarefas.appendChild(lista)
         lista.classList.add('linha') 
         lista.textContent= itemLista
 
-        let etiqueta = document.createElement('p')
-        lista.appendChild(etiqueta)
-        etiqueta.textContent= intemEtiqueta
-        etiqueta.classList.add('etiqueta')
+        // lista.addEventListener('dblclick', function(){
+        //     lista.setAttribute('contenteditable', true)
+        // })
+       
+
+        let opcoesEtiqueta = document.createElement('span')
+        lista.appendChild(opcoesEtiqueta)
+        opcoesEtiqueta.textContent= opcoes.value
+        opcoesEtiqueta.classList.add('opcoes')
 
         const botaoX = document.createElement('button')
         lista.appendChild(botaoX)

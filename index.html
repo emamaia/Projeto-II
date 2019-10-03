@@ -22,8 +22,15 @@
             
             <form class='formulario' id='formulario'>
                     <input id='input__usuario' type="text" placeholder="  Digite uma tarefa">
-                    <input id='input__etiqueta' type="select" placeholder='  Digite o tipo da tarefa'">
-           
+                    <label for="opcoes__usuario" id='opcoes'>
+                        <select name="Tipo Tarefa" id="seletor__etiqueta">
+                            <option value="EmBranco">Escolha o tipo de tarefa</option>
+                            <option value="Mercado">Mercado</option>
+                            <option value="Farmácia">Farmácia</option>
+                            <option value="Home">Home</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </label>                   
                     <button id='input__botao'>Add</button>
                     <p id='msg__erro'></p>
             </form>
