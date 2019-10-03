@@ -6,21 +6,27 @@ const erro = document.getElementById('msg__erro')
 const botoes = document.getElementById('botoes')
 const botaoRemover = document.createElement('button')
 const botaoFeitos = document.createElement('button')
+const botaoExlcuiCheck = document.createElement('button')
 let dragging 
 botoes.appendChild(botaoFeitos)
 botoes.appendChild(botaoRemover)
+botoes.appendChild(botaoExlcuiCheck)
 
 botaoFeitos.classList.add('botao__feitos')
 botaoRemover.classList.add('botao__remover')
+botaoExlcuiCheck.classList.add('botao__feitos')
 
-botaoFeitos.textContent= 'Marcar todos como lidos'
-botaoRemover.textContent= 'Remover todos itens' 
+botaoFeitos.textContent= 'Marcar lidos'
+botaoRemover.textContent= 'Excluir todos' 
+botaoExlcuiCheck.textContent= 'Exluir concluídos'
 
 formulario.addEventListener('submit', function(evento){
     evento.preventDefault()   
           
     const inputUsuario= document.getElementById('input__usuario')
     const itemLista = inputUsuario.value
+    const inputEtiqueta = document.getElementById('input__etiqueta')
+    const intemEtiqueta = inputEtiqueta.value
                    
     if(itemLista.trim()===''){
         erro.classList.add('erro')
@@ -28,10 +34,17 @@ formulario.addEventListener('submit', function(evento){
     } else {
         erro.classList.remove('erro')
         erro.textContent=''
+
         let lista = document.createElement('li')
         listaTarefas.appendChild(lista)
         lista.classList.add('linha') 
         lista.textContent= itemLista
+
+        let etiqueta = document.createElement('p')
+        lista.appendChild(etiqueta)
+        etiqueta.textContent= intemEtiqueta
+        etiqueta.classList.add('etiqueta')
+
         const botaoX = document.createElement('button')
         lista.appendChild(botaoX)
         botaoX.textContent= 'x'
@@ -51,24 +64,32 @@ formulario.addEventListener('submit', function(evento){
         botaoRemover.addEventListener('click', function(){
            lista.remove()                   
         })    
+
+        botaoExlcuiCheck.addEventListener('click', function(){
+            if(lista.classList.contains('check__tarefa') || listaTarefas.classList.contains('check__tarefa') ){
+                lista.remove()
+            }
+        })
         
-    containerLista.setAttribute('draggable', true)
-    listaTarefas.setAttribute('draggable', true)
-    lista.setAttribute('draggable', true)
+        containerLista.setAttribute('draggable', true)
+        listaTarefas.setAttribute('draggable', true)
+        lista.setAttribute('draggable', true)
 
-   listaTarefas.addEventListener('dragstart', function(ev){
-        dragging = ev.target.closest('.linha')
-   })
+        listaTarefas.addEventListener('dragstart', function(ev){
+            dragging = ev.target.closest('.linha')
+        })
 
-   listaTarefas.addEventListener('dragover', function(ev){
-       ev.preventDefault()
-       const node = ev.target.closest('.linha')
-       this.insertBefore(dragging, node)
-   })
+        listaTarefas.addEventListener('dragover', function(ev){
+            ev.preventDefault()
+            const node = ev.target.closest('.linha')
+            this.insertBefore(dragging, node)
+        })
 
-   listaTarefas.addEventListener('dragend', function(ev){
-       dragging=null
-   })
+        listaTarefas.addEventListener('dragend', function(ev){
+            dragging=null
+        })
+
+  
 
     }
 
@@ -86,7 +107,6 @@ botaoFeitos.addEventListener('click', function(){
         }     
 })
 
-// comentario
 
 
 
