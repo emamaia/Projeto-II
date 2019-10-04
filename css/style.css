@@ -60,13 +60,47 @@ h2{
     list-style: none;
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 .etiqueta {
     color: beige;
     background-color: #ba7af8;
     font-size: 11px;
-    margin-right: 0;       
+    margin-right: 0;   
+    position: absolute; right: 30px;      
+}
+
+.mercado {
+    color: beige;
+    background-color: #107a40;
+    font-size: 11px;
+    margin-right: 0; 
+    position: absolute; right: 30px;
+}
+
+.farmacia {
+    color: beige;
+    background-color: #b41b1b;
+    font-size: 11px;
+    margin-right: 0; 
+    position: absolute; right: 30px;
+}
+
+.home {
+    color: beige;
+    background-color: #1b34c0;
+    font-size: 11px;
+    margin-right: 0; 
+    position: absolute; right: 30px;
+}
+
+.outros{
+    color: beige;
+    background-color: #0b080e;
+    font-size: 11px;
+    margin-right: 0; 
+    position: absolute; right: 30px;
 }
 
 .erro {
