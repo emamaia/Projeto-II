@@ -61,6 +61,18 @@ formulario.addEventListener('submit', function(evento){
         listaTarefas.removeChild(lista)       
         })   
 
+        let corEtiqueta = opcoes.value
+        switch(corEtiqueta){
+            case 'Mercado': opcoesEtiqueta.classList.add('mercado');
+            break;
+            case 'Farmácia': opcoesEtiqueta.classList.add('farmacia');
+            break;
+            case 'Home': opcoesEtiqueta.classList.add('home');
+            break;
+            case ' Outros': opcoesEtiqueta.classList.add('outros');
+            break;
+        }
+
         lista.addEventListener('click', function(){
             if(lista.classList.contains('check__tarefa')){
                 lista.classList.remove('check__tarefa')
@@ -95,9 +107,7 @@ formulario.addEventListener('submit', function(evento){
 
         listaTarefas.addEventListener('dragend', function(ev){
             dragging=null
-        })
-
-  
+        }) 
 
     }
 
